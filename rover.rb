@@ -2,16 +2,19 @@
 #   * Add method move_possible?
 #     Check if Rover can do the move (if it's not trying to go outside the plateau)
 #     Get size of the plateau
-#   * Check if Rover is initialised with correct params
 class Rover
 
   # Initialize Rover
   #
   # Set his initial position and facing
   def initialize(x, y, facing)
-    @x = x
-    @y = y
-    @facing = facing
+    if x.is_a?(Integer) && y.is_a?(Integer) && DIRECTIONS.include?(facing)
+      @x = x
+      @y = y
+      @facing = facing
+    else
+      raise 'Wrong arguments.'
+    end
   end
 
   # Turn the rover

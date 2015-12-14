@@ -6,6 +6,14 @@ describe Rover do
     @rover = Rover.new(1, 1, 'N')
   end
 
+  describe "#new" do
+    it "raises an exception if wrong params" do
+      expect {
+        Rover.new('1', '2', 'Q')
+      }.to raise_error('Wrong arguments.')
+    end
+  end
+
   describe "#turn" do
     it "turns left if param is 'L'" do
       expect {

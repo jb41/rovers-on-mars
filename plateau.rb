@@ -1,3 +1,5 @@
+# Class representing Plateau
+# checks if move for a Rover is possible
 class Plateau
 
   def initialize(x, y)

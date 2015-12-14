@@ -1,7 +1,3 @@
-# TO DO:
-#   * Add method move_possible?
-#     Check if Rover can do the move (if it's not trying to go outside the plateau)
-#     Get size of the plateau
 class Rover
 
   # Initialize Rover

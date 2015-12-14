@@ -59,5 +59,41 @@ describe Rover do
       end
     end
 
+    describe "#ride" do
+      it "rides the rover first example path" do
+        @rover = Rover.new(1, 2, 'N')
+
+        expect {
+          @rover.ride('LMLMLMLMM')
+        }.to change {
+          @rover.current_position
+        }.from(
+          { x: 1, y: 2, facing: 'N' }
+        ).to(
+          { x: 1, y: 3, facing: 'N' }
+        )
+      end
+
+      it "rides the rover second example path" do
+        @rover = Rover.new(3, 3, 'E')
+
+        expect {
+          @rover.ride('MMRMMRMRRM')
+        }.to change {
+          @rover.current_position
+        }.from(
+          { x: 3, y: 3, facing: 'E' }
+        ).to(
+          { x: 5, y: 1, facing: 'E' }
+        )
+      end
+
+      it "throws exception when wrong move" do
+        expect {
+          @rover.ride("FooBar")
+        }.to raise_error('Wrong move.')
+      end
+    end
+
   end
 end

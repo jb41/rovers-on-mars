@@ -3,7 +3,6 @@
 #     Check if Rover can do the move (if it's not trying to go outside the plateau)
 #     Get size of the plateau
 #   * Check if Rover is initialised with correct params
-#   * Add #ride(String) method which do the ride over the plateau
 class Rover
 
   # Initialize Rover
@@ -44,6 +43,21 @@ class Rover
       y: @y,
       facing: @facing
     }
+  end
+
+  def ride(route)
+    route.each_char do |char|
+      case char
+      when 'L'
+        turn('L')
+      when 'R'
+        turn('R')
+      when 'M'
+        move
+      else
+        raise 'Wrong move.'
+      end
+    end
   end
 
   protected

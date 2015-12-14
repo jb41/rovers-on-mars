@@ -3,13 +3,14 @@ require 'spec_helper'
 describe Rover do
 
   before :each do
-    @rover = Rover.new(1, 1, 'N')
+    @plateau = Plateau.new(5, 5)
+    @rover = Rover.new(1, 1, 'N', @plateau)
   end
 
   describe "#new" do
     it "raises an exception if wrong params" do
       expect {
-        Rover.new('1', '2', 'Q')
+        Rover.new('1', '2', 'Q', @plateau)
       }.to raise_error('Wrong arguments.')
     end
   end
@@ -47,7 +48,7 @@ describe Rover do
 
       correct_position_after_move.each do |correct_position|
         it "moves correctly when facing #{correct_position[:facing]}" do
-          @rover = Rover.new(1, 1, correct_position[:facing])
+          @rover = Rover.new(1, 1, correct_position[:facing], @plateau)
           expect {
             @rover.move
           }.to change {
@@ -69,7 +70,7 @@ describe Rover do
 
     describe "#ride" do
       it "rides the rover first example path" do
-        @rover = Rover.new(1, 2, 'N')
+        @rover = Rover.new(1, 2, 'N', @plateau)
 
         expect {
           @rover.ride('LMLMLMLMM')
@@ -83,7 +84,7 @@ describe Rover do
       end
 
       it "rides the rover second example path" do
-        @rover = Rover.new(3, 3, 'E')
+        @rover = Rover.new(3, 3, 'E', @plateau)
 
         expect {
           @rover.ride('MMRMMRMRRM')

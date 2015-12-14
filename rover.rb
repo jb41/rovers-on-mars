@@ -82,11 +82,7 @@ class Rover
     end
 
     def move_possible?(x, y)
-      if @plateau.move_possible?(x, y)
-        true
-      else
-        raise 'Impossible move (no more plateau there).'
-      end
+      @plateau.move_possible?(x, y)
     end
 
 end
